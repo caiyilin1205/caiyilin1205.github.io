@@ -3,4 +3,7 @@ title: "Resume"
 output: html_document
 ---
 
-[Download my resume (PDF)](resume.pdf)
+I have a strong background in computational biology, data analysis, and biostatistics, with experience spanning both academic research and the biotechnology industry. At UCLA, I worked on projects involving single-cell gene regulatory network inference and RNA-seq data analysis, integrating statistical modeling and computational methods to uncover biological insights. I also gained hands-on experience through internships at Origincell Bank and Livzon Pharmaceutical Group, where I contributed to clinical research, bioequivalence studies, and scientific communication. Currently, I am pursuing my M.S. in Biostatistics at Columbia University, where I continue to strengthen my analytical and quantitative research skills.
+
+
+If you would like you know more about my professional and academic experience, you can check out my resume. [Download my resume (PDF)](resume.pdf)

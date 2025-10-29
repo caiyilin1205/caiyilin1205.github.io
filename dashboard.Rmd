@@ -8,6 +8,8 @@ output:
 
 [return to home](index.html)
 
+These are the interactive plots I made based on the data [instacart](https://p8105.com/dataset_instacart.html).
+
 ```{r setup, include=FALSE, message=FALSE}
 library(flexdashboard)
 library(tidyverse)
