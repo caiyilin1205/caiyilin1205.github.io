@@ -1,0 +1,95 @@
+---
+title: "dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+[return to home](index.html)
+
+```{r setup, include=FALSE, message=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+
+data("instacart")
+
+
+insta <- instacart |>
+mutate(
+reordered = if_else(reordered == 1, "Yes", "No"),
+order_dow = factor(order_dow, levels = 0:6,
+labels = c("Sun","Mon","Tue","Wed","Thu","Fri","Sat"))
+)
+
+orders_by_hour <- insta |>
+filter(!is.na(order_hour_of_day)) |>
+count(order_hour_of_day, name = "n") |>
+arrange(order_hour_of_day)
+
+top_aisles <- insta |>
+count(aisle, name = "n", sort = TRUE) |>
+slice_head(n = 10) |>
+mutate(aisle = fct_reorder(aisle, n))
+
+box_dat <- insta |>
+filter(!is.na(add_to_cart_order), add_to_cart_order > 0, add_to_cart_order <= 60) |>
+select(reordered, add_to_cart_order)
+
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+plot_ly(
+data = orders_by_hour,
+x = ~order_hour_of_day, y = ~n, type = "scatter", mode = "lines+markers"
+) |>
+layout(
+title = "Order Volume by Hour",
+xaxis = list(title = "Hour of Day (0–23)"),
+yaxis = list(title = "Number of Orders")
+)
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+plot_ly(
+data = top_aisles,
+x = ~n, y = ~aisle, type = "bar", orientation = "h",
+hovertemplate = "Aisle: %{y}<br>Orders: %{x}<extra></extra>"
+) |>
+layout(
+title = "Most-Ordered Aisles",
+xaxis = list(title = "Orders"),
+yaxis = list(title = "")
+)
+
+```
+
+### Chart C
+
+```{r}
+plot_ly(
+data = box_dat,
+x = ~reordered, y = ~add_to_cart_order, type = "box"
+) |>
+layout(
+title = "Items Added Earlier if Previously Ordered",
+xaxis = list(title = "Previously Ordered?"),
+yaxis = list(title = "Add-to-Cart Position (lower = earlier)")
+)
+
+```
+
+

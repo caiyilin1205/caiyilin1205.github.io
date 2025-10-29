@@ -7,6 +7,8 @@ navbar:
       href: about.html
     - text: "Resume"
       href: Resume.html
+    - text: "Dashboard"
+      href: dashboard.html
     - icon: fa-envelope fa-lg
       href: mailto:<caiyilin1205@g.ucla.edu>
     - icon: fa-github fa-lg
