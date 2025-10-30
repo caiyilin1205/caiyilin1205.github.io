@@ -1,13 +1,9 @@
 ---
-title: "My awesome website"
+title: "Yilin Cai"
 output: 
   html_document:
     toc: true
-    toc_float: true
-    
 ---
-
-# This is Yilin Cai's awesome website
 
 Hi! I’m Yilin Cai from Shanghai, China. I’m currently a Master’s student in Biostatistics at Columbia University in the City of New York. I earned my undergraduate degree from UCLA, where I majored in Computational and Systems Biology and minored in Statistics and Data Science.
 
